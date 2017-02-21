@@ -1,0 +1,6 @@
+#!/bin/bash
+# build -- script to build project from command line -- same as CodeLite
+mkdir -p cmake-build-Debug
+cd cmake-build-Debug
+cmake .. -DCMAKE_BUILD_TYPE=Debug
+make

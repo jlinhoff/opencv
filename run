@@ -1,0 +1,3 @@
+#!/bin/bash
+# file: run
+cmake-build-Debug/simplecv /home/joe/Downloads/edges.png
