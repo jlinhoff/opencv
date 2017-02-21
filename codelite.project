@@ -9,6 +9,8 @@
   <Dependencies/>
   <VirtualDirectory Name="src">
     <File Name="src/main.cpp"/>
+    <File Name="src/main.h"/>
+    <File Name="src/iorect.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
