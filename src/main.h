@@ -25,6 +25,7 @@ enum {
     ERR_SYNTAX,
     ERR_MISSING_FNAME,
     ERR_OUT_OF_RANGE,
+    ERR_DATA_ERROR,
 };
 
 //
@@ -40,19 +41,20 @@ public:
     // get help for the operation
     virtual std::string getHelp();
     
-    // reset the operation to the state at startup
-    // this clears all images and paramters
+    // reset to defaults, return ERR_ code
     virtual int reset() = 0;
     
     // set the source image for the operation
     // return ERR_ code
     virtual int setImgSrc(Mat imgSrc);
     
-    // add parameters
+    // add arguments, add one argument line at a time
+    // arguments depend on operation
+    // return ERR_ code
     virtual int addArgs(std::string &args);
     
     // run the operation
-    // reutrn <0 on error
+    // reutrn ERR_ code
     virtual int run() = 0;
     
 }; // class ImgOp

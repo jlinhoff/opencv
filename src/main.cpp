@@ -74,6 +74,7 @@ int ImgOp::addArgs(std::string &params)
 ////////////////////////////////////////////////////////////////////////////////
 
 extern int iorectRegister(Main *main);
+extern int iofillRegister(Main *main);
 static int mainRegisterImgOps(Main *main) {
     int fail=0,r;
     
@@ -81,7 +82,9 @@ static int mainRegisterImgOps(Main *main) {
     
     if((r=iorectRegister(main)<0))
         fail=r;
-
+    if((r=iofillRegister(main)<0))
+        fail=r;
+        
     return fail;
 } // mainRegisterImgOps()
 

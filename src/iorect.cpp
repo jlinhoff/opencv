@@ -4,7 +4,7 @@
 class ImgOpRect : public ImgOp {
 public:
 
-    // reset operation, return ERR_ code
+    // reset to defaults, return ERR_ code
     int reset() override;
     
     // get help for the operation
@@ -28,9 +28,9 @@ protected:
 };
 
 int iorectRegister(Main *main) {
-    Ptr<ImgOpRect> iorect = Ptr<ImgOpRect>(new ImgOpRect);
-    iorect->name = "rect";
-    main->registerImgOp(iorect);
+    Ptr<ImgOpRect> io = Ptr<ImgOpRect>(new ImgOpRect);
+    io->name = "rect";
+    main->registerImgOp(io);
     return ERR_OK;
 }
 
@@ -89,12 +89,9 @@ int ImgOpRect::run()
     int r;
     int ncols = imgSrc.cols;
     int nrows = imgSrc.rows;
-    int itype = imgSrc.type();
-    int nacross = nchan*ncols;
     int x,y,x0,y0,x1,y1;
     x0 = xArg; x1 = x0 + wArg;
     y0 = yArg; y1 = y0 + hArg;
-    
     x0 = CLAMP(x0,0,ncols);
     y0 = CLAMP(y0,0,nrows);
     x1 = CLAMP(x1,x0,ncols);
@@ -109,8 +106,8 @@ int ImgOpRect::run()
             p[0]=0;     // B
             p[1]=255;   // G
             p[2]=255;   // R
-        }
-    }
+        } // for
+    } // for
    
    r=ERR_OK;
 FINAL:
